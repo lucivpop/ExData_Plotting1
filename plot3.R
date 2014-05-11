@@ -25,6 +25,12 @@ wd <- weekdays(as.Date(c("1/2/2007", "2/2/2007", "3/2/2007"),
                abbreviate=T)
 i.wd<-c(1,i.sd,nrow(data))
 
+## get max value for y axis
+y1max<-data$Sub_metering_1[which.max(data$Sub_metering_1)]
+y2max<-data$Sub_metering_2[which.max(data$Sub_metering_2)]
+y3max<-data$Sub_metering_3[which.max(data$Sub_metering_3)]
+ymax<-max(c(y1max,y2max,y3max))
+
 ## open png file device
 ## plot graphic of Energy sub metering(as 3 time series)
 ## close device
