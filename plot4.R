@@ -3,7 +3,7 @@ data.raw<-read.table("household_power_consumption.txt",
                      header=T,sep=";",nrows=2075259,na.strings=c("?"),
                      stringsAsFactors=F)
 
-## select days "1/2/2007", "2/2/2007" in data
+## select days "1/2/2007", "2/2/2007" from data
 ## create a datetime column from date and time columns
 ## order by datetime ascending
 data<-subset(data.raw, Date=="1/2/2007" | Date=="2/2/2007")
@@ -37,7 +37,7 @@ ymax<-max(c(y1max,y2max,y3max))
 png(filename="plot4.png",width = 480, height = 480, units = "px")
 par(mfrow=c(2,2),byrow=T,mar=c(5,4,4,2))
 
-## first graphic
+## plot first graphic
 plot(data$x,data$Global_active_power,
      type="l",
      col="black",
@@ -46,14 +46,14 @@ plot(data$x,data$Global_active_power,
      ylab="Global active power (kilowatts)")
 axis(1,at=i.wd,labels=wd)
 
-## second graphic
+## plot second graphic
 plot(data$Voltage,type="l",
      ylab="Voltage",
      xlab="datetime",
      xaxt="n")
 axis(1,at=i.wd,labels=wd)
 
-## third graphic
+## plot third graphic
 plot(data$Sub_metering_3,type="n",
      ylim=c(1,ymax),
      ylab="Energy sub metering",
@@ -66,7 +66,7 @@ axis(1,at=i.wd,labels=wd)
 legend("topright",lty=1,lwd=2,col=c("black","red","blue"),
        legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),bty="n")
 
-## fourth graphic
+## plot fourth graphic
 plot(data$Global_reactive_power,type="l",
          ylab="Global_reactive_power",
          xlab="datetime",
